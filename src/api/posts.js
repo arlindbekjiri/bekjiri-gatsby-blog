@@ -1,7 +1,5 @@
-// Gatsby Function: legt einen Beitrag als MDX-Datei im Ordner blog/ an.
-// Lokal (gatsby develop) sieht Gatsby die neue Datei sofort und baut die Seite.
-// ponytail: auf Vercel ist das Dateisystem schreibgeschützt -> 501; für Produktion
-// müsste die Function die Datei per GitHub-API committen (neuer Build) oder ein CMS nutzen.
+// Speichert einen Beitrag als blog/<slug>/index.mdx
+// Geht nur lokal, auf Vercel ist das Dateisystem schreibgeschützt
 const fs = require("fs")
 const path = require("path")
 
@@ -29,7 +27,7 @@ export default function handler(req, res) {
     return res.status(409).json({ error: `Den Beitrag «${slug}» gibt es schon.` })
   }
 
-  // MDX führt {…} und <…> als Code aus -> als HTML-Entities speichern
+  // { } < > würde MDX als Code lesen, darum als HTML-Entities speichern
   const safeBody = body.replace(/[{}<>]/g, (c) => `&#${c.charCodeAt(0)};`)
   const date = new Date().toISOString().slice(0, 10)
   fs.mkdirSync(dir, { recursive: true })

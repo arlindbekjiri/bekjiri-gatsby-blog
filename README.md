@@ -1,15 +1,16 @@
 # bekjiri-gatsby-blog
 
-Blog nach dem offiziellen [Gatsby-Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/) (M245, Aufgabe 7).
+Blog für M245 Aufgabe 7 mit Gatsby, gebaut nach dem [Gatsby-Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/).
 
-- Live: https://bekjiri-gatsby-blog.vercel.app
-- Liste: `/blog/` · Detail: `/blog/<slug>/` · Formular: `/blog/new/`
+Live: https://bekjiri-gatsby-blog.vercel.app
+
+## Lokal starten
 
 ```bash
 npm install
-npm run develop   # http://localhost:8000
-npm run build
+npm run develop
 ```
 
-Das Formular speichert Beiträge über die Gatsby Function `src/api/posts.js` als MDX-Datei in `blog/`.
-Das geht nur lokal; auf Vercel antwortet die Function mit 501, weil die Seiten beim Build entstehen.
+Danach läuft die Seite auf http://localhost:8000.
+
+Das Formular unter `/blog/new/` speichert Beiträge nur lokal, weil das Dateisystem auf Vercel schreibgeschützt ist.
